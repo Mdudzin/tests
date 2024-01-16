@@ -29,19 +29,22 @@ public class Task4Test extends BaseTests {
 
     List<YTTile> ytTileList = new ArrayList<>();
 
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 12; i++) {
       YTTile yTTile = new YTTile();
-      yTTile.setTitle(titles.get(i + 1).getText());
+      yTTile.setTitle(titles.get(i).getText());
       yTTile.setChannel(channelNames.get(i).getText());
-      yTTile.setLength(videoLengths.get(i).getDomProperty("innerText").trim());
+      if ((videoLengths.get(i).getDomProperty("innerText").trim()).equals("LIVE")) {
+        yTTile.setLength("live");
+      } else {
+        yTTile.setLength(videoLengths.get(i).getDomProperty("innerText").trim());
+      }
       ytTileList.add(yTTile);
     }
-
     //4. Wypisać z utworzonej listy tytuł oraz czas trwania dla wszystkich filmów, które nie są
     //transmitowane na żywo.
     for (YTTile yTTile : ytTileList) {
       if (!(yTTile.getLength().equals("live"))) {
-        System.out.println(yTTile.getTitle() + " " + yTTile.getLength());
+        System.out.println(yTTile.getTitle() + " : " + yTTile.getLength());
       }
     }
   }
