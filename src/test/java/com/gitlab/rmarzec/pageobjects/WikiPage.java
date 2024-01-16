@@ -10,13 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WikipediaHomePage {
+public class WikiPage {
   @FindBy(id = "p-lang-btn-checkbox")
   private WebElement languageButton;
   @FindBy(css = "a[class='autonym']")
   private List<WebElement> languageLinks;
 
-  public WikipediaHomePage(WebDriver webDriver) {
+  public WikiPage(WebDriver webDriver) {
     PageFactory.initElements(webDriver, this);
   }
 
