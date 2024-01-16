@@ -18,6 +18,8 @@ public class YouTubePage {
   private List<WebElement> channelNames;
   @FindBy(xpath = ".//*[@id='time-status']/span")
   private List<WebElement> videoLengths;
+  @FindBy(xpath = ".//div[@id='meta']")
+  private List<WebElement> metaTexts;
 
   public YouTubePage(WebDriver webDriver) {
     PageFactory.initElements(webDriver, this);
@@ -32,12 +34,15 @@ public class YouTubePage {
 
     for (int i = 0; i < 11; i++) {
       YTTile yTTile = new YTTile();
-
-      yTTile.setTitle(titles.get(i+1).getText());
+      yTTile.setTitle(titles.get(i + 1).getText());
       yTTile.setChannel(channelNames.get(i).getText());
-      String text = videoLengths.get(i).getDomProperty("innerText").trim();
-      System.out.println(text);
-      yTTile.setLength(videoLengths.get(i).getDomProperty("innerText").trim());
+      String metaText = metaTexts.get(i).getDomProperty("outerText").trim();
+
+      if (metaText.contains("LIVE")) {
+        yTTile.setLength("live");
+      } else {
+        yTTile.setLength(videoLengths.get(i).getDomProperty("innerText").trim());
+      }
       ytTileList.add(yTTile);
     }
     return ytTileList;

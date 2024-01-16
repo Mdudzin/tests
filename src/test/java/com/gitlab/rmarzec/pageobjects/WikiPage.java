@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WikiPage {
+
   @FindBy(id = "p-lang-btn-checkbox")
   private WebElement languageButton;
   @FindBy(css = "a[class='autonym']")
@@ -39,6 +40,7 @@ public class WikiPage {
 
   public void waitForLinks(WebDriver webDriver) {
     WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
-    wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("a[class='autonym']"),6));
+    wait.until(
+        ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("a[class='autonym']"), 6));
   }
 }

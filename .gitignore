@@ -27,3 +27,4 @@ replay_pid*
 
 # Project exclude paths
 /target/
+/.idea/
