@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class Task4Test extends BaseTests {
 
   @Test
-  public void extractYTTileData() {
+  public void extractAndPrintYTTileData() {
     YouTubePage youTubePage = new YouTubePage(webDriver);
     navigateTo("https://www.youtube.com/");
     youTubePage.acceptCookies();
