@@ -3,7 +3,6 @@ package com.gitlab.rmarzec.task;
 import com.gitlab.rmarzec.pageobjects.GoogleHomePage;
 import com.gitlab.rmarzec.pageobjects.W3schoolsPage;
 import com.gitlab.rmarzec.utils.BaseTests;
-import java.util.Set;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -42,15 +41,6 @@ public class Task3Test extends BaseTests {
     if (!(webDriver.getCurrentUrl().equals(url))) {
       System.out.println("Current URL: " + webDriver.getCurrentUrl());
       navigateTo(url);
-    }
-  }
-
-  private void switchToNewTab() {
-    Set<String> tabs = webDriver.getWindowHandles();
-    for (String tab : tabs) {
-      if (tabs.size() > 1) {
-        webDriver.switchTo().window(tab);
-      }
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.gitlab.rmarzec.task;
 
 import com.gitlab.rmarzec.model.YTTile;
-import com.gitlab.rmarzec.pageobjects.YouTubePage;
+import com.gitlab.rmarzec.pageobjects.YouTubeHomePage;
 import com.gitlab.rmarzec.utils.BaseTests;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -12,10 +12,10 @@ public class Task4Test extends BaseTests {
 
   @Test
   public void extractAndPrintYTTileData() {
-    YouTubePage youTubePage = new YouTubePage(webDriver);
+    YouTubeHomePage youTubeHomePage = new YouTubeHomePage(webDriver);
     navigateTo(youtubeUrl);
-    youTubePage.acceptCookies();
-    List<YTTile> ytTileList = youTubePage.createYtTileList();
+    youTubeHomePage.acceptCookies();
+    List<YTTile> ytTileList = youTubeHomePage.createYtTileList();
     printTitlesAndLength(ytTileList);
   }
 

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class YouTubePage {
+public class YouTubeHomePage {
 
   @FindBy(css = "button[aria-label^='Accept']")
   private WebElement acceptCookiesButton;
@@ -21,7 +21,7 @@ public class YouTubePage {
   @FindBy(xpath = ".//div[@id='meta']")
   private List<WebElement> metaTexts;
 
-  public YouTubePage(WebDriver webDriver) {
+  public YouTubeHomePage(WebDriver webDriver) {
     PageFactory.initElements(webDriver, this);
   }
 
