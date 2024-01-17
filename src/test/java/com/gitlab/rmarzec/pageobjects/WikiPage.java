@@ -28,6 +28,7 @@ public class WikiPage {
 
   public void printAvailableLanguages() {
     WaitUtil.waitForElementsToBeMoreThan(webDriver, By.cssSelector("a[class='autonym']"), 6);
+
     for (WebElement language : languageLinks) {
       String languageName = language.getText();
       String languageURL = language.getDomAttribute("href");
