@@ -21,8 +21,6 @@ public class Task4Test extends BaseTests {
 
   private void printTitlesAndLength(List<YTTile> ytTileList) {
     for (YTTile yTTile : ytTileList) {
-//      System.out.println(yTTile.getTitle() + " : " + yTTile.getLength());
-
       if (!(yTTile.getLength().equals("live"))) {
         System.out.println(yTTile.getTitle() + " : " + yTTile.getLength());
         System.out.println(
