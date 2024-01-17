@@ -8,10 +8,12 @@ import org.testng.annotations.Test;
 
 public class Task4Test extends BaseTests {
 
+  private final String youtubeUrl = "https://www.youtube.com/";
+
   @Test
   public void extractAndPrintYTTileData() {
     YouTubePage youTubePage = new YouTubePage(webDriver);
-    navigateTo("https://www.youtube.com/");
+    navigateTo(youtubeUrl);
     youTubePage.acceptCookies();
     List<YTTile> ytTileList = youTubePage.createYtTileList();
     printTitlesAndLength(ytTileList);
@@ -19,8 +21,12 @@ public class Task4Test extends BaseTests {
 
   private void printTitlesAndLength(List<YTTile> ytTileList) {
     for (YTTile yTTile : ytTileList) {
+//      System.out.println(yTTile.getTitle() + " : " + yTTile.getLength());
+
       if (!(yTTile.getLength().equals("live"))) {
         System.out.println(yTTile.getTitle() + " : " + yTTile.getLength());
+        System.out.println(
+            "============================================================================================================");
       }
     }
   }

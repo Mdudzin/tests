@@ -1,11 +1,14 @@
 package com.gitlab.rmarzec.pageobjects;
 
+import com.gitlab.rmarzec.utils.WaitUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class GoogleHomePage {
+
+  private WebDriver webDriver;
 
   @FindBy(id = "APjFqb")
   private WebElement searchInput;
@@ -16,6 +19,7 @@ public class GoogleHomePage {
 
   public GoogleHomePage(WebDriver webDriver) {
     PageFactory.initElements(webDriver, this);
+    this.webDriver = webDriver;
   }
 
   public void acceptCookies() {
@@ -23,6 +27,7 @@ public class GoogleHomePage {
   }
 
   public void clickFeelingLuckyButton() {
+    WaitUtil.waitForElementToBeClickable(webDriver, feelingLuckyButton);
     feelingLuckyButton.click();
   }
 

@@ -1,16 +1,16 @@
 package com.gitlab.rmarzec.pageobjects;
 
-import java.time.Duration;
+import com.gitlab.rmarzec.utils.WaitUtil;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WikiPage {
+
+  private WebDriver webDriver;
 
   @FindBy(id = "p-lang-btn-checkbox")
   private WebElement languageButton;
@@ -19,6 +19,7 @@ public class WikiPage {
 
   public WikiPage(WebDriver webDriver) {
     PageFactory.initElements(webDriver, this);
+    this.webDriver = webDriver;
   }
 
   public void clickLanguageButton() {
@@ -26,6 +27,7 @@ public class WikiPage {
   }
 
   public void printAvailableLanguages() {
+    WaitUtil.waitForElementsToBeMoreThan(webDriver, By.cssSelector("a[class='autonym']"), 6);
     for (WebElement language : languageLinks) {
       String languageName = language.getText();
       String languageURL = language.getDomAttribute("href");
@@ -36,11 +38,5 @@ public class WikiPage {
         System.out.println(languageName);
       }
     }
-  }
-
-  public void waitForLinks(WebDriver webDriver) {
-    WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
-    wait.until(
-        ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("a[class='autonym']"), 6));
   }
 }

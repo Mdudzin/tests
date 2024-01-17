@@ -6,12 +6,13 @@ import org.testng.annotations.Test;
 
 public class Task2Test extends BaseTests {
 
+  private final String wikiUrl = "https://pl.wikipedia.org/wiki/Wiki";
+
   @Test
   public void printAllAvailableLanguages() {
     WikiPage wikiPage = new WikiPage(webDriver);
-    navigateTo("https://pl.wikipedia.org/wiki/Wiki");
+    navigateTo(wikiUrl);
     wikiPage.clickLanguageButton();
-    wikiPage.waitForLinks(webDriver);
     wikiPage.printAvailableLanguages();
   }
 }
